@@ -27,11 +27,20 @@ function onFormInput(event) {
 
 function onFormSubmit(event) {
     event.preventDefault();
-    event.currentTarget.reset();
-    localStorage.removeItem("feedback-form-state");
-    console.log(messageSubmit);
-    messageSubmit.message = "";
-    messageSubmit.email = "";
+    if(textAreaForm.value === "" || inputEmailEl.value === "") {
+      const message = "Необхідно заповнити всі поля!"
+      alert(message);
+    }
+    else
+    {
+      event.currentTarget.reset();
+      localStorage.removeItem("feedback-form-state");
+      console.log(messageSubmit);
+      messageSubmit.message = "";
+      messageSubmit.email = "";
+    };
+
+
 };
 
 function savedText(event) {
